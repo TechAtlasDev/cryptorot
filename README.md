@@ -47,8 +47,8 @@ Para instalar correctamente el bot, sigue los siguientes pasos:
 <br>
 
 4) Instalar las dependencias y configurar el sistema:
-    - El setup es tan simple como poner el siguiente comando: <code>bash setup.sh</code>
-    - Finalmente, darle permisos al ejecutable de ser utilizado: <code>chmod 776 src/rot</code>
+    - Darle permisos al ejecutable de ser utilizado: <code>chmod 776 src/rot</code>
+    - Finalmente, el setup es tan simple como poner el siguiente comando: <code>bash setup.sh</code>
 
 <br>
 
