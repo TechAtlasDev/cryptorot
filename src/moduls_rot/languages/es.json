@@ -1,0 +1,6 @@
+{
+    "help": "\n    Rot es una herramienta de cifrado basado en el algoritmo de rotación de letras basadas en el abecedario    inglés, que permite cifrar textos, lo que hace que ocultar datos y hacerlos ilegibles a simple vista\n    sea muy dificil sin requerir de alguna key (cantidad de rotaciones).\n\n  Opciones:\n    -r                 Establecer la llave (13 por defecto), solo será necesario establecerlo 1 vez si se quiere seguir con la misma llave.\n    -d                 Se va a descifrar el texto.\n    --json             El sistema entregará los datos en formato JSON.\n    --help, -h         Mostrar este mensaje de ayuda\n    --lang             Establecer un idioma para la interacción con el sistema. (2 letras)\n\n  Ejemplos:\n    rot Hola mundo\n    rot Hola mundo -r 12\n    rot Ubyn -d -r 13\n    rot Ubyn -d\n    rot Hola mundo -r 15 --json\n    rot ubyn -r 13 -d --json\n    rot --lang es",
+    "KEY_NOT_FOUND": "No se encontró el valor de la clave.",
+    "LANG_NOT_FOUND": "No se encontró un idioma.",
+    "INVALID_KEY": "La Key tiene que ser un número."
+}

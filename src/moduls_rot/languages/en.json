@@ -1,0 +1,6 @@
+{
+    "help": "\n Rot is an encryption tool based on the letter rotation algorithm based on the English alphabet, which allows texts to be encrypted, which makes hiding data and making it unreadable at a glance\n very difficult without requiring a key (number of rotations).\n\n Options:\n -r Set the key (13 by default), it will only be necessary to set it 1 time if you want to continue with the same key.\n -d The text will be decrypted. \n --json The system will deliver the data in JSON format.\n --help, -h Show this help message\n --lang Set a language for interaction with the system. (2 letters)\n\n Examples:\n rot Hello world\n rot Hello world -r 12\n rot Ubyn -d -r 13\n rot Ubyn -d\n rot Hello world -r 15 --json\n rot ubyn -r 13 -d --json\n rot --lang en",
+    "KEY_NOT_FOUND": "Key not found.",
+    "LANG_NOT_FOUND": "Lang not found.",
+    "INVALID_KEY": "The key must be a number."
+}

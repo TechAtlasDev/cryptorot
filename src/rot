@@ -1,0 +1,83 @@
+#!/usr/bin/env python3
+
+# Importando los modulos
+from moduls_rot.moduls import *
+import sys, os
+
+RUTA_ARCHIVO = "/".join(os.path.abspath(__file__).split("/")[:-1])
+
+# Procesando los parámetros obtenidos
+parametros = sys.argv
+config = load_json()
+try:
+    LANG = load_json(f"{RUTA_ARCHIVO}/moduls_rot/languages/{config['language']}.json")
+except:
+    print (NOTIFICATION.format("Language is not valid, using english as default language."))
+    config["language"] = "en"
+    save_json(config)
+    LANG = load_json(f"{RUTA_ARCHIVO}/moduls_rot/languages/{config['language']}.json")
+
+CLAVE = config["rotation"]
+TEXTO = ""
+CIPHER = True
+JSON = False
+
+if len(parametros) == 1 or "--help" in parametros or "-h" in parametros:
+    print (LANG["help"])
+    sys.exit()
+
+if "-d" in parametros:
+    CIPHER = False
+    index = parametros.index("-d")
+    parametros.pop(index)
+
+if "--json" in parametros:
+    JSON = True
+    index = parametros.index("--json")
+    parametros.pop(index)
+
+if "--lang" in parametros:
+    if len(parametros) == 2:
+        print (LANG["LANG_NOT_FOUND"])
+        sys.exit() # Salir del script
+
+    # Procesando la clave
+    index = parametros.index("--lang")
+    LANGUAGE = parametros[index+1]
+    config["language"] = LANGUAGE
+    save_json(config)
+
+    parametros.pop(index)
+    parametros.pop(index)
+    sys.exit()
+
+
+if "-r" in parametros:
+    if len(parametros) == 2:
+        print (LANG["KEY_NOT_FOUND"])
+        sys.exit() # Salir del script
+
+    # Procesando la clave
+    index = parametros.index("-r")
+    try:
+        CLAVE = int(parametros[index+1])
+        config["rotation"] = CLAVE
+        save_json(config)
+    except ValueError:
+        print (LANG["INVALID_KEY"])
+        sys.exit()
+
+    parametros.pop(index)
+    parametros.pop(index)
+    parametros.pop(0)
+
+    TEXTO = " ".join(parametros)
+    #print (f"CLAVE: {CLAVE} | TEXTO: {TEXTO} | INDEX: {index}")
+
+
+elif "-r" not in parametros and len(parametros) > 1:
+    TEXTO = " ".join(parametros[1:])
+
+response = rot(TEXTO, CLAVE, CIPHER, JSON)
+
+print (FONDO_NEGRO+BB+response+FONDO_NEUTRO)
